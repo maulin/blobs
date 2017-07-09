@@ -5,19 +5,29 @@ class Game < Gosu::Window
     super
     self.caption = 'Blobs'
     self.world = World.new(width, height)
-    @drawn = false
+    @initial_draw = false
   end
 
   def update
   end
 
   def draw
-    @drawn = true
-    world.draw_map
+    @initial_draw = true
+    world.draw
   end
 
-  def needs_redraw?
-    !@drawn
+  def button_down(id)
+    if id == Gosu::MsLeft
+      world.process_click(mouse_x, mouse_y)
+    end
+  end
+
+  #def needs_redraw?
+    #!@initial_draw
+  #end
+
+  def needs_cursor?
+    true
   end
 
   def message

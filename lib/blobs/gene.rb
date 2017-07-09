@@ -1,8 +1,8 @@
 class Gene
   attr_accessor :value
 
-  def to_s
-    value
+  def name
+    raise 'implement in subclass'
   end
 
   def self.descendants
